@@ -24,6 +24,8 @@ routes.post("/question", QuestionController.store);
 routes.post("/user", UserController.store);
 
 routes.get("/answer", AnswerQuestionController.index);
+routes.get("/answer/:id", AnswerQuestionController.indexById);
+routes.get("/answer/result/:id", AnswerQuestionController.indexByIdResult);
 routes.get("/question", QuestionController.index);
 routes.get("/question/:id", QuestionController.indexById);
 routes.get("/user", UserController.index);

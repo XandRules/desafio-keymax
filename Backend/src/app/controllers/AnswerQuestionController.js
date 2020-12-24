@@ -43,6 +43,31 @@ class AnswerQuestionController {
     return res.json(answerQuestion);
   }
 
+  async indexById(req, res) {
+    const answerQuestion = await AnswerQuestion.findAll({
+      where:{
+        id: req.params.id
+      }
+    });
+
+    return res.json(answerQuestion);
+  }
+
+  async indexByIdResult(req, res) {
+
+    const answerQuestion = await AnswerQuestion.count(
+      {
+         attributes: ['answer_select'], 
+         group: 'answer_select', 
+         where:{
+           question_id: req.params.id
+         }
+      }
+    );
+
+    return res.json(answerQuestion);
+  }
+  
 }
 
 export default new AnswerQuestionController();

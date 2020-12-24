@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/app/resources/services/auth.service';
 
 @Component({
   selector: 'app-question',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  public data : any
+
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService,
+    private app: AppComponent,
+    private router: Router) { }
 
   ngOnInit(): void {
+    console.log('Dashboard') 
+    
+    this.app.load();
+
+    console.log(this.authService.role);
+
+    this.httpClient.get('http://localhost:3333/question').subscribe((data)=> {
+      this.data = data;
+      console.log(this.data);
+    });   
+
+    
   }
 
 }
