@@ -34,14 +34,17 @@
                             {{question.answer_d}}
                           </label>
                       </div>        
-                    <a href="#" class="btn btn-primary btn-sm" 
+                    <a class="btn btn-primary btn-sm" *ngIf="!question.survey_end"
                     style="margin: 1px" [routerLink]="['/question/answer', question.id]">Responder</a>
-                    <a href="#" class="btn btn-success btn-sm" 
+                    <a class="btn btn-success btn-sm" 
                     style="margin: 1px" [routerLink]="['/question/result', question.id]">Resultado</a>
-                    <a href="#" class="btn btn-warning btn-sm" 
-                    style="margin: 1px" [routerLink]="['/question/result', question.id]">Encerrar</a>
-                    <a href="#" class="btn btn-danger btn-sm" 
-                    style="margin: 1px" [routerLink]="['/question/result', question.id]">Excluir</a>
+                    <a class="btn btn-warning btn-sm" 
+                    style="margin: 1px" *ngIf="isLogged && !question.survey_end"
+                     (click)="doSurveyEnd(question.id,question.survey_end)">Encerrar</a>
+                    <a class="btn btn-warning btn-sm" *ngIf="isLogged && question.survey_end"
+                    style="margin: 1px" (click)="doSurveyEnd(question.id,question.survey_end )">Reabrir</a>
+                    <a class="btn btn-danger btn-sm" *ngIf="isLogged"
+                    style="margin: 1px" (click)="doDelete(question.id)">Excluir</a>
                   </div>
                 </div>
               </div>

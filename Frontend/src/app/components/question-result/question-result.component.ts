@@ -38,7 +38,7 @@ export class QuestionResultComponent implements OnInit{
         this.order = params["id"];
   
         this.httpClient.get(`http://localhost:3333/answer/result/${this.order}`).subscribe((data)=> {
-          this.data = data[0];
+          this.data = data;
           
           this.barGraph(this.data);
           console.log(this.data);
@@ -63,14 +63,15 @@ export class QuestionResultComponent implements OnInit{
 
     console.log('dado',dado);
 
-    var chart = am4core.create("chartdiv", am4charts.XYChart);
+    let chart = am4core.create("chartdiv", am4charts.XYChart);
+    chart.scrollbarX = new am4core.Scrollbar();
 
+    // Add data
     chart.data = dado;
 
-    chart.padding(40, 40, 40, 40);
-
-    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = 'Perfil';
+    // Create axes
+    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "answer_select";
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.renderer.minGridDistance = 30;
     categoryAxis.renderer.labels.template.horizontalCenter = "right";
@@ -79,34 +80,35 @@ export class QuestionResultComponent implements OnInit{
     categoryAxis.tooltip!.disabled = true;
     categoryAxis.renderer.minHeight = 110;
 
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.min = 0;
-    valueAxis.extraMax = 0.1;
-    //valueAxis.rangeChangeEasing = am4core.ease.linear;
-    //valueAxis.rangeChangeDuration = 1500;
+    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.renderer.minWidth = 50;
 
-    var series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.categoryX = 'Perfil';
-    series.dataFields.valueY = "Total";
-    series.tooltipText = "{valueY.value}"
-    series.columns.template.strokeOpacity = 0;
-    series.columns.template.column.cornerRadiusTopRight = 10;
+    // Create series
+    let series = chart.series.push(new am4charts.ColumnSeries());
+    series.sequencedInterpolation = true;
+    series.dataFields.valueY = "count";
+    series.dataFields.categoryX = "answer_select";
+    series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+    series.columns.template.strokeWidth = 0;
+
+    series.tooltip!.pointerOrientation = "vertical";
+
     series.columns.template.column.cornerRadiusTopLeft = 10;
+    series.columns.template.column.cornerRadiusTopRight = 10;
+    series.columns.template.column.fillOpacity = 0.8;
 
-    var labelBullet = series.bullets.push(new am4charts.LabelBullet());
-    labelBullet.label.verticalCenter = "bottom";
-    labelBullet.label.dy = -10;
-    labelBullet.label.text = "{values.valueY.workingValue.formatNumber('#.')}";
-    series.tooltip!.pointerOrientation = "horizontal";
+    // on hover, make corner radiuses bigger
+    let hoverState = series.columns.template.column.states.create("hover");
+    hoverState.properties.cornerRadiusTopLeft = 0;
+    hoverState.properties.cornerRadiusTopRight = 0;
+    hoverState.properties.fillOpacity = 1;
 
-    chart.zoomOutButton.disabled = true;
-
-    // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-    series.columns.template.adapter.add("fill", function (fill, target) {
-    return chart.colors.getIndex(target.dataItem!.index);
+    series.columns.template.adapter.add("fill", function(fill, target) {
+      return chart.colors.getIndex(target.dataItem!.index);
     });
 
-    categoryAxis.sortBySeries = series;
+    // Cursor
+    chart.cursor = new am4charts.XYCursor();
   }
 
   ngOnDestroy() {

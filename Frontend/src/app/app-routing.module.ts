@@ -9,7 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './resources/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: '', pathMatch: 'full', redirectTo: 'questions' },
   { path: 'login', component: LogInComponent },
   { path: 'questions', component: QuestionComponent },
   { path: 'register/question', component: RegisterComponent },
@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'dashboard', component : DashboardComponent
   },
-  { path: '**', redirectTo: 'login' },
+  { path: '**', redirectTo: 'questions' },
 ];
 
 @NgModule({

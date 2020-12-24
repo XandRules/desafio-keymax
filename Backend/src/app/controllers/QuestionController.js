@@ -51,19 +51,16 @@ class QuestionController {
     const question = await Question.findAll({
       where :{
         id: req.params.id
-      }
+      },
+      order:['id desc']
     });
 
     return res.json(question);
   }
+  
   async update(req, res) {
     try {
       const schema = Yup.object().shape({
-        question_title : Yup.string().required(),
-        answer_a :Yup.string().required(),
-        answer_b :Yup.string().required(),
-        answer_c : Yup.string(),
-        answer_d : Yup.string(),
         survey_end : Yup.boolean().default(false),
       });
 
