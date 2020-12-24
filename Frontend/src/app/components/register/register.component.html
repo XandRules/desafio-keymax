@@ -1,0 +1,40 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Cadastrar Pessoa</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form">
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Primeiro Nome"
+          [(ngModel)]="registerPeople.name" name="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Sobrenome"
+          [(ngModel)]="registerPeople.lastname" name="lastname">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="CPF"
+          [(ngModel)]="registerPeople.cpf" name="cpf">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Escolha um Perfil...</mat-label>
+          <mat-select [(ngModel)]="registerPeople.role" [ngModelOptions]="{standalone: true}">
+            <mat-option  [value]="roles"  *ngFor="let roles of Roles"
+           >{{roles}}              
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="primary" class="btn-block" (click)="registerNewPeople()">Cadastrar</button>
+
+    </form>
+  </mat-card>
+</div>

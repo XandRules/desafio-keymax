@@ -29,23 +29,12 @@ class SessionController {
       });
     }
 
-    if (!(await user.checkPassword(req.body.password))) {
+    if (!(await user.checkPassword(password))) {
       return res.status(500).json({
         message: 'Senha não confere'
       });
     }
-    
-    const userLogged = await User.findOne({
-      include:[{
-        association : 'people',
-        required : true,
-        attributes : ['role'],
-      }],
-      where:{
-       people_id: user.people_id
-      } 
-    });
-    
+     
 
     return res.json({
       jwt: jwt.sign({
@@ -54,7 +43,7 @@ class SessionController {
       }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
-      role: userLogged.people.role
+      role: user.role
     });
   }
 
