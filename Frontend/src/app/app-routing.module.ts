@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { QuestionAnswerComponent } from './components/question-answer/question-answer.component';
 import { QuestionResultComponent } from './components/question-result/question-result.component';
@@ -15,9 +14,6 @@ const routes: Routes = [
   { path: 'register/question', component: RegisterComponent },
   { path: 'question/answer/:id', component: QuestionAnswerComponent },
   { path: 'question/result/:id', component: QuestionResultComponent },
-  {
-    path: 'dashboard', component : DashboardComponent
-  },
   { path: '**', redirectTo: 'questions' },
 ];
 

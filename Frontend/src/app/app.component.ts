@@ -18,5 +18,8 @@ export class AppComponent {
     localStorage.removeItem('access_token');
     localStorage.removeItem('role');
     this.loggedUser = null;
+    
+    document.location.reload(true);
+
   }
 }

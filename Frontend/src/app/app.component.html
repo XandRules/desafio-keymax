@@ -16,7 +16,7 @@
           </li>
         </ul>
           <button  *ngIf="(!loggedUser)" class="btn btn-outline-success"  routerLink="/login" type="submit">Login</button>    
-          <button  *ngIf="(loggedUser)" class="btn btn-outline-danger"  routerLink="/dashboard" (click)="sair()" type="submit">Sair</button> 
+          <button  *ngIf="(loggedUser)" class="btn btn-outline-danger"  routerLink="/" (click)="sair()" type="submit">Sair</button> 
       </div>
     </div>
   </nav>
