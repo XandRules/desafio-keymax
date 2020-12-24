@@ -21,9 +21,14 @@ yarn start
 yarn start
 ```
 
-## Para inicializar a criação das Tabelas criar o Banco com nome de preferencia. nesse Projeto utilizei PostgreSQL
+## Para inicializar a criação das Tabelas criar o Banco com nome de preferência. nesse Projeto utilizei PostgreSQL
 ## Entrar na Pasta BackEnd e Executar, antes de executar criar um arquivo .env conforme o arquivo .env_exemplo,
 ## Preencher as credenciais do Banco de dados e rodar o comando
 ```bash
 yarn server
 ```
+## Para criar o primeiro usuário padrão do sistema rodar o comando dentro da pasta Backend
+```bash
+yarn seed
+```
+## O usuário padrão é admin e a senha 123456
