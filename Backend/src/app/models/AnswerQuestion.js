@@ -7,7 +7,7 @@ class AnswerQuestion extends Model {
     // migration de resposta de enquete
     super.init({
       question_id: Sequelize.NUMBER,
-      answer_select: Sequelize.NUMBER,
+      answer_select: Sequelize.STRING,
       date: Sequelize.DATE,
     }, {
       sequelize,

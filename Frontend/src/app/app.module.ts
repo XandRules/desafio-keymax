@@ -21,6 +21,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
 import { QuestionComponent } from './components/question/question.component';
+import { QuestionAnswerComponent } from './components/question-answer/question-answer.component';
+import { QuestionResultComponent } from './components/question-result/question-result.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { QuestionComponent } from './components/question/question.component';
     RegisterComponent,
     LogInComponent,
     QuestionComponent,
+    QuestionAnswerComponent,
+    QuestionResultComponent,
   ],
   imports: [
     BrowserModule,

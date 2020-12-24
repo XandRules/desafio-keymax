@@ -5,7 +5,11 @@ import User from '../models/User';
 class DashboardController {
  
   async index(req, res) {
-   console.log('teste')
+   const question = await Question.findAll({
+     limit : 5
+   });
+
+   res.json(question)
   }
 
 }

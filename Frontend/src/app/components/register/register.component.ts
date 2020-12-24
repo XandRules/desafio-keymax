@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RegisterPeople } from 'src/app/resources/models/RegisterPeople';
+import { RegisterQuestion } from 'src/app/resources/models/RegisterQuestion';
 import { AlertService } from 'src/app/resources/services/alert.service';
 import { AuthService } from 'src/app/resources/services/auth.service';
 
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   Roles: any = ['Administrador', 'Técnico', 'Proprietário'];
 
-  registerPeople: any;
+  registerQuestion: any;
   token: any;
 
   constructor(private httpClient: HttpClient,
@@ -23,18 +23,19 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
-    this.registerPeople = new RegisterPeople();
+    this.registerQuestion = new RegisterQuestion();
     this.token = this.authService.token;
   }
 
 
-  public registerNewPeople(): void {
-    this.httpClient.post("http://localhost:3333/people",
-      this.registerPeople).subscribe(data => {
+  public registerNewQuestion(): void {
+    this.httpClient.post("http://localhost:3333/question",
+      this.registerQuestion).subscribe(data => {
         console.log(data);
-        this.registerPeople = null;
-        console.log(this.registerPeople);
-        this.alertService.success('Cadastro Realizado!', 'Cadastro realizado com sucesso');
+        this.registerQuestion = null;
+        console.log(this.registerQuestion);
+        this.alertService.success('Cadastro Realizado!', 'Emquete criada com sucesso!');
+        this.registerQuestion = null;
       },
         error => {
           this.alertService.error('Oops!', error.error.message);

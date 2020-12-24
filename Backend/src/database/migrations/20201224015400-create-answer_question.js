@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
       },
       answer_select: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       date: {
@@ -18,7 +18,7 @@ module.exports = {
       question_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'User',
+          model: 'Question',
           key: 'id'
         },
         onUpdate: 'CASCADE',

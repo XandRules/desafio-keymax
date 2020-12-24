@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/resources/services/auth.service';
 import { AppComponent } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit{
   constructor(
     private httpClient: HttpClient,
     private authService: AuthService,
-    private app: AppComponent) { }
+    private app: AppComponent,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -30,10 +32,14 @@ export class DashboardComponent implements OnInit{
     console.log(this.authService.role);
 
     this.httpClient.get('http://localhost:3333/dashboard').subscribe((data)=> {
-      
-     
+      this.data = data;
+      console.log(this.data);
     });   
 
+    
+  }
+  public openQuestion(id: number): void {
+    this.router.navigate(['/answer', id]);
   }
 
 }

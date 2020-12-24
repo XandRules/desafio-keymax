@@ -1,1 +1,43 @@
-<p>question-answer works!</p>
+
+<div class="container">
+    <div class="row" style="margin-top: 0.4rem;">
+        <div class="col-md-12 card">
+            <h4 class="card-header">Responder à enquete</h4>
+            <div class="container">
+                <div>
+                    <div class="row">
+                        <h2>{{question_title}}</h2>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="answer" id="answer_a">
+                          <label class="form-check-label" for="answer_a">
+                            {{answer_a}}
+                          </label>
+                      </div>   
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="answer" id="answer_b">
+                          <label class="form-check-label" for="answer_b">
+                            {{answer_b}}
+                          </label>
+                      </div> 
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="answer" id="answer_c">
+                          <label class="form-check-label" for="answer_c">
+                            {{answer_c}}
+                          </label>
+                      </div> 
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="answer" id="answer_d">
+                          <label class="form-check-label" for="answer_d">
+                            {{answer_d}}
+                          </label>
+                      </div>              
+                    </div>    
+                    
+                    <button class="btn btn-outline-primary"  style="margin: 1rem;" (click)="doAnswer();">Responder</button> 
+
+                </div>
+            </div>
+            
+        </div>
+      </div>
+  </div>

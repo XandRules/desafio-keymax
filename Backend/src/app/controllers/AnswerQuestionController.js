@@ -7,7 +7,8 @@ class AnswerQuestionController {
     try {
       const schema = Yup.object().shape({
         question_id : Yup.number().required(),
-        answer_select :Yup.number().required(),
+        answer_select :Yup.string().required(),
+
       });
   
       console.log(req.body)
@@ -21,6 +22,8 @@ class AnswerQuestionController {
       console.log(req.body);
 
       const answerQuestion = await AnswerQuestion.create(req.body);
+
+      console.log(answerQuestion)
 
       return res.json(answerQuestion);
       

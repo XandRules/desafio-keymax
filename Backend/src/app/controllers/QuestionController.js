@@ -46,7 +46,16 @@ class QuestionController {
 
     return res.json(question);
   }
+  
+  async indexById(req, res) {
+    const question = await Question.findAll({
+      where :{
+        id: req.params.id
+      }
+    });
 
+    return res.json(question);
+  }
   async update(req, res) {
     try {
       const schema = Yup.object().shape({

@@ -1,40 +1,39 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Cadastrar Pessoa</mat-card-title>
-    </mat-card-header>
 
-    <form class="example-form">
-
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Primeiro Nome"
-          [(ngModel)]="registerPeople.name" name="name">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Sobrenome"
-          [(ngModel)]="registerPeople.lastname" name="lastname">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="CPF"
-          [(ngModel)]="registerPeople.cpf" name="cpf">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <mat-label>Escolha um Perfil...</mat-label>
-          <mat-select [(ngModel)]="registerPeople.role" [ngModelOptions]="{standalone: true}">
-            <mat-option  [value]="roles"  *ngFor="let roles of Roles"
-           >{{roles}}              
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </mat-card-content>
-
-      <button mat-stroked-button color="primary" class="btn-block" (click)="registerNewPeople()">Cadastrar</button>
-
-    </form>
-  </mat-card>
+<div class="container">
+  <div class="row" style="margin-top: 0.4rem;">
+      <div class="col-md-12 card">
+          <h4 class="card-header">Nova Enquete</h4>
+          <div class="container">
+            <div class="row">
+              <div class="mb-3">
+                <label for="quetion-title" class="form-label">Enquete</label>
+                <textarea [(ngModel)]="registerQuestion.question_title" name="title"
+                 class="form-control" id="quetion-title" rows="2"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="answer-a" class="form-label">Primeira Alternativa</label>
+                <input type="text" [(ngModel)]="registerQuestion.answer_a" name="answer-a"
+                class="form-control" id="answer-a" placeholder="Descreva a primeira alternativa">
+              </div>
+              <div class="mb-3">
+                <label for="answer-b" class="form-label">Segunda Alternativa </label>
+                <input type="text" [(ngModel)]="registerQuestion.answer_b" name="answer-b"
+                class="form-control" id="answer-b" placeholder="Descreva a segunda alternativa">
+              </div>
+              <div class="mb-3">
+                <label for="answer-c" class="form-label">Terveira Alternativa</label>
+                <input type="text" [(ngModel)]="registerQuestion.answer_c" name="answer-c"
+                class="form-control" id="answer-c" placeholder="Descreva a terceira alternativa">
+              </div>
+              <div class="mb-3">
+                <label for="answer-d" class="form-label">Quarta Alternativa</label>
+                <input type="text" [(ngModel)]="registerQuestion.answer_d" name="answer-d"
+                class="form-control" id="answer-d" placeholder="Descreva a quarta alternativa">
+              </div>
+            </div>    
+            <button class="btn btn-outline-primary"  (click)="registerNewQuestion()" style="margin-bottom: 1rem;">Salvar</button> 
+          </div>
+          
+      </div>
+    </div>
 </div>
