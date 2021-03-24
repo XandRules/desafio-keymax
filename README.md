@@ -1,10 +1,6 @@
 
 
 
-## Demosntração funcional da Aplicação
-
-<p  align="center"><img src="https://github.com/XandRules/desafio-keymax/blob/main/gif/keymax.gif"></p>
-
 ## Para instalar as dependências do projeto BackEnd rodar o comando
 ```bash
 yarn
